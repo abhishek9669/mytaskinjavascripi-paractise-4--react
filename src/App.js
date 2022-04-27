@@ -1,24 +1,53 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+  //state/hooks
+  const[datah,setData] =useState('')
+
+
+  //function to
+  let data1 ={
+    "data":{
+      Name:datah
+    }
+   
+  }
+  let myFunction =()=>{
+   
+    //alert('Please enter')
+    fetch('http://localhost:1337/api/friends',{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'accept': 'application/json' 
+      },
+      body: JSON.stringify(data1)
+
+    }).then((response)=>{
+      return response.json();
+    }).then((res)=>{
+      console.log(res) 
+
+    }).catch((err)=>{
+      console.log(err);
+    })
+  }
+
+
+  //return statment
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+     <form>
+          <label>Enter Student Name <br/>
+            <input type="text" value={ datah } onChange={ (e)=>{ setData(e.target.value) }} />
+          </label><br/>
+          <input type="button" onClick={ myFunction } name="studentName" value="Save Student" />
+      </form>
+
+        
+    </>
   );
 }
 
