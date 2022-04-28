@@ -4,11 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Covid19 from './Covid19';
+import Rcc from './component/Rcc';
+import Formdatavalidition from './component/Formdatavalidition';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Covid19 />
+    <Formdatavalidition />
   </React.StrictMode>
 );
 
