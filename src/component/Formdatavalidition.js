@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import swal from 'sweetalert';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from 'react-toastify';
 
 export default function Formdatavalidition() {
     //statewise
@@ -57,7 +60,15 @@ export default function Formdatavalidition() {
      <div>
          {
              Object.keys(error).length === 0 && isSubmit &&
-             <p>hello gm</p>
+
+
+            //  swal({
+            //   title: "Good job!",
+            //   text: "LOgin successfully!",
+            //   icon: "success",
+            //   button: "Close!",
+            // })
+            toast("Login successfully!")
          }
      </div>
      <form onSubmit={(e)=>{handleSubmit(e)}}>
@@ -74,8 +85,7 @@ export default function Formdatavalidition() {
               onChange={handleChange}
             />
           </div>
-          <p>{error.username}</p>
-          {/* <p>{formErrors.username}</p> */}
+          <p className="a_red">{error.username}</p>
           <div className="field">
             <label>Email</label>
             <input
@@ -86,7 +96,7 @@ export default function Formdatavalidition() {
               onChange={handleChange}
             />
           </div>
-          <p>{error.email}</p>
+          <p className="a_red">{error.email}</p>
           <div className="field">
             <label>Password</label>
             <input
@@ -97,9 +107,10 @@ export default function Formdatavalidition() {
               onChange={handleChange}
             />
           </div>
-          <p>{error.password}</p>
+          <p className="a_red">{error.password}</p>
           <button className="fluid ui button blue">Submit</button>
         </div>
+        <ToastContainer />
       </form>
     </>
   )
